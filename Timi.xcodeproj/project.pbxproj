@@ -16,6 +16,9 @@
 		8B876C4C1E330656009A6E7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B876C4A1E330656009A6E7E /* LaunchScreen.storyboard */; };
 		8B876C571E330656009A6E7E /* TimiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B876C561E330656009A6E7E /* TimiTests.m */; };
 		8B876C621E330656009A6E7E /* TimiUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B876C611E330656009A6E7E /* TimiUITests.m */; };
+		8B876C711E331211009A6E7E /* TimiTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B876C701E331211009A6E7E /* TimiTableViewCell.m */; };
+		8B876C741E3334BA009A6E7E /* TimiTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B876C731E3334BA009A6E7E /* TimiTableViewController.m */; };
+		8BFA60CD1E38AB9100BFE8A7 /* TimiItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA60CC1E38AB9100BFE8A7 /* TimiItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,12 @@
 		8B876C5D1E330656009A6E7E /* TimiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B876C611E330656009A6E7E /* TimiUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimiUITests.m; sourceTree = "<group>"; };
 		8B876C631E330656009A6E7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B876C6F1E331211009A6E7E /* TimiTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimiTableViewCell.h; sourceTree = "<group>"; };
+		8B876C701E331211009A6E7E /* TimiTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimiTableViewCell.m; sourceTree = "<group>"; };
+		8B876C721E3334BA009A6E7E /* TimiTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimiTableViewController.h; sourceTree = "<group>"; };
+		8B876C731E3334BA009A6E7E /* TimiTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimiTableViewController.m; sourceTree = "<group>"; };
+		8BFA60CB1E38AB9100BFE8A7 /* TimiItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimiItem.h; sourceTree = "<group>"; };
+		8BFA60CC1E38AB9100BFE8A7 /* TimiItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimiItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +116,13 @@
 				8B876C3D1E330656009A6E7E /* AppDelegate.m */,
 				8B876C3F1E330656009A6E7E /* ViewController.h */,
 				8B876C401E330656009A6E7E /* ViewController.m */,
+				8B876C721E3334BA009A6E7E /* TimiTableViewController.h */,
+				8B876C731E3334BA009A6E7E /* TimiTableViewController.m */,
 				8B876C421E330656009A6E7E /* Main.storyboard */,
+				8B876C6F1E331211009A6E7E /* TimiTableViewCell.h */,
+				8B876C701E331211009A6E7E /* TimiTableViewCell.m */,
+				8BFA60CB1E38AB9100BFE8A7 /* TimiItem.h */,
+				8BFA60CC1E38AB9100BFE8A7 /* TimiItem.m */,
 				8B876C481E330656009A6E7E /* Assets.xcassets */,
 				8B876C4A1E330656009A6E7E /* LaunchScreen.storyboard */,
 				8B876C4D1E330656009A6E7E /* Info.plist */,
@@ -281,7 +296,10 @@
 			files = (
 				8B876C471E330656009A6E7E /* Timi.xcdatamodeld in Sources */,
 				8B876C411E330656009A6E7E /* ViewController.m in Sources */,
+				8B876C741E3334BA009A6E7E /* TimiTableViewController.m in Sources */,
 				8B876C3E1E330656009A6E7E /* AppDelegate.m in Sources */,
+				8B876C711E331211009A6E7E /* TimiTableViewCell.m in Sources */,
+				8BFA60CD1E38AB9100BFE8A7 /* TimiItem.m in Sources */,
 				8B876C3B1E330656009A6E7E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,6 +538,7 @@
 				8B876C681E330656009A6E7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8B876C691E330656009A6E7E /* Build configuration list for PBXNativeTarget "TimiTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +547,7 @@
 				8B876C6B1E330656009A6E7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8B876C6C1E330656009A6E7E /* Build configuration list for PBXNativeTarget "TimiUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +556,7 @@
 				8B876C6E1E330656009A6E7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
