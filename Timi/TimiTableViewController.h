@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef void (^TotalValueChangeBlock)(double, double);
+
 @interface TimiTableViewController : UITableViewController
+
+@property (nonatomic, copy) TotalValueChangeBlock totalValueChangeBlock;
 
 @end

@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B5E92491E3D92EC001E2CFA /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E92481E3D92EC001E2CFA /* HeaderView.xib */; };
+		8B5E92511E3E06B0001E2CFA /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E924F1E3E06B0001E2CFA /* KeyboardView.xib */; };
+		8B5E92551E3E3F71001E2CFA /* AddNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E92531E3E3F71001E2CFA /* AddNoteViewController.m */; };
+		8B5E92561E3E3F71001E2CFA /* AddNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E92541E3E3F71001E2CFA /* AddNoteViewController.xib */; };
+		8B5E925E1E3F235A001E2CFA /* KeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E925D1E3F235A001E2CFA /* KeyboardView.m */; };
+		8B5E92601E3F3E2E001E2CFA /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E925F1E3F3E2E001E2CFA /* AlertView.xib */; };
 		8B876C3B1E330656009A6E7E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B876C3A1E330656009A6E7E /* main.m */; };
 		8B876C3E1E330656009A6E7E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B876C3D1E330656009A6E7E /* AppDelegate.m */; };
-		8B876C411E330656009A6E7E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B876C401E330656009A6E7E /* ViewController.m */; };
 		8B876C441E330656009A6E7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B876C421E330656009A6E7E /* Main.storyboard */; };
 		8B876C471E330656009A6E7E /* Timi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B876C451E330656009A6E7E /* Timi.xcdatamodeld */; };
 		8B876C491E330656009A6E7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B876C481E330656009A6E7E /* Assets.xcassets */; };
@@ -39,12 +44,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B5E92481E3D92EC001E2CFA /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		8B5E924F1E3E06B0001E2CFA /* KeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
+		8B5E92521E3E3F71001E2CFA /* AddNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNoteViewController.h; sourceTree = "<group>"; };
+		8B5E92531E3E3F71001E2CFA /* AddNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNoteViewController.m; sourceTree = "<group>"; };
+		8B5E92541E3E3F71001E2CFA /* AddNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNoteViewController.xib; sourceTree = "<group>"; };
+		8B5E925C1E3F235A001E2CFA /* KeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardView.h; sourceTree = "<group>"; };
+		8B5E925D1E3F235A001E2CFA /* KeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardView.m; sourceTree = "<group>"; };
+		8B5E925F1E3F3E2E001E2CFA /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		8B876C361E330656009A6E7E /* Timi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B876C3A1E330656009A6E7E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8B876C3C1E330656009A6E7E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B876C3D1E330656009A6E7E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8B876C3F1E330656009A6E7E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8B876C401E330656009A6E7E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8B876C431E330656009A6E7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B876C461E330656009A6E7E /* Timi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Timi.xcdatamodel; sourceTree = "<group>"; };
 		8B876C481E330656009A6E7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,10 +125,16 @@
 			children = (
 				8B876C3C1E330656009A6E7E /* AppDelegate.h */,
 				8B876C3D1E330656009A6E7E /* AppDelegate.m */,
-				8B876C3F1E330656009A6E7E /* ViewController.h */,
-				8B876C401E330656009A6E7E /* ViewController.m */,
+				8B5E925F1E3F3E2E001E2CFA /* AlertView.xib */,
+				8B5E924F1E3E06B0001E2CFA /* KeyboardView.xib */,
+				8B5E925C1E3F235A001E2CFA /* KeyboardView.h */,
+				8B5E925D1E3F235A001E2CFA /* KeyboardView.m */,
+				8B5E92521E3E3F71001E2CFA /* AddNoteViewController.h */,
+				8B5E92531E3E3F71001E2CFA /* AddNoteViewController.m */,
+				8B5E92541E3E3F71001E2CFA /* AddNoteViewController.xib */,
 				8B876C721E3334BA009A6E7E /* TimiTableViewController.h */,
 				8B876C731E3334BA009A6E7E /* TimiTableViewController.m */,
+				8B5E92481E3D92EC001E2CFA /* HeaderView.xib */,
 				8B876C421E330656009A6E7E /* Main.storyboard */,
 				8B876C6F1E331211009A6E7E /* TimiTableViewCell.h */,
 				8B876C701E331211009A6E7E /* TimiTableViewCell.m */,
@@ -267,9 +284,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B5E92601E3F3E2E001E2CFA /* AlertView.xib in Resources */,
 				8B876C4C1E330656009A6E7E /* LaunchScreen.storyboard in Resources */,
+				8B5E92511E3E06B0001E2CFA /* KeyboardView.xib in Resources */,
 				8B876C491E330656009A6E7E /* Assets.xcassets in Resources */,
 				8B876C441E330656009A6E7E /* Main.storyboard in Resources */,
+				8B5E92561E3E3F71001E2CFA /* AddNoteViewController.xib in Resources */,
+				8B5E92491E3D92EC001E2CFA /* HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,11 +315,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B5E92551E3E3F71001E2CFA /* AddNoteViewController.m in Sources */,
 				8B876C471E330656009A6E7E /* Timi.xcdatamodeld in Sources */,
-				8B876C411E330656009A6E7E /* ViewController.m in Sources */,
 				8B876C741E3334BA009A6E7E /* TimiTableViewController.m in Sources */,
 				8B876C3E1E330656009A6E7E /* AppDelegate.m in Sources */,
 				8B876C711E331211009A6E7E /* TimiTableViewCell.m in Sources */,
+				8B5E925E1E3F235A001E2CFA /* KeyboardView.m in Sources */,
 				8BFA60CD1E38AB9100BFE8A7 /* TimiItem.m in Sources */,
 				8B876C3B1E330656009A6E7E /* main.m in Sources */,
 			);

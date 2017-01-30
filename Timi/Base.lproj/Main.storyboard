@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VgO-Qw-yAL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lSt-Pj-dJW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,17 +9,33 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Timi Table View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="2WW-A2-xnB">
+            <objects>
+                <navigationController id="lSt-Pj-dJW" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Hx-FT-9ac">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="VgO-Qw-yAL" kind="relationship" relationship="rootViewController" id="6FO-L1-mzo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GwD-Zr-Wlv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1575" y="-228"/>
+        </scene>
+        <!--TimiNote-->
         <scene sceneID="yOt-xh-D59">
             <objects>
                 <tableViewController id="VgO-Qw-yAL" customClass="TimiTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="xYY-9j-C57">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="75" sectionFooterHeight="28" id="xYY-9j-C57">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeftCell" rowHeight="60" id="9WQ-Qb-I2N" customClass="LeftCell">
-                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="75" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9WQ-Qb-I2N" id="GaO-zH-K3m">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -31,7 +47,10 @@
                                                 <constraint firstAttribute="height" constant="30" id="MLf-Xh-haF"/>
                                                 <constraint firstAttribute="width" constant="30" id="yJk-Yd-2Rw"/>
                                             </constraints>
-                                            <state key="normal" image="car3"/>
+                                            <state key="normal" image="icon_edit"/>
+                                            <connections>
+                                                <action selector="clickEditBtn:" destination="9WQ-Qb-I2N" eventType="touchUpInside" id="i93-B7-GUG"/>
+                                            </connections>
                                         </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqk-yj-Oce">
                                             <rect key="frame" x="182" y="29" width="30" height="30"/>
@@ -39,11 +58,14 @@
                                                 <constraint firstAttribute="height" constant="30" id="46E-kI-jQp"/>
                                                 <constraint firstAttribute="width" constant="30" id="bpm-CD-bZ1"/>
                                             </constraints>
-                                            <state key="normal" image="pig"/>
+                                            <state key="normal" image="icon_delete"/>
+                                            <connections>
+                                                <action selector="clickDeleteBtn:" destination="9WQ-Qb-I2N" eventType="touchUpInside" id="l3J-ra-UTR"/>
+                                            </connections>
                                         </button>
                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="01G-qS-M2m">
                                             <rect key="frame" x="196" y="0.0" width="2" height="30"/>
-                                            <color key="backgroundColor" red="0.49755460810000002" green="1" blue="0.33833382429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="2" id="6hP-9O-Ubv"/>
                                                 <constraint firstAttribute="height" constant="30" id="sA3-fp-T5b"/>
@@ -61,6 +83,9 @@
                                                 <constraint firstAttribute="height" constant="30" id="qov-7Y-LoJ"/>
                                             </constraints>
                                             <state key="normal" image="Plus"/>
+                                            <connections>
+                                                <action selector="clickMidBtn:" destination="9WQ-Qb-I2N" eventType="touchUpInside" id="CXi-W4-RJI"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="工资 120" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3v-3Q-CTR">
                                             <rect key="frame" x="107" y="34" width="67" height="21"/>
@@ -97,7 +122,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RightCell" rowHeight="60" id="ygm-Hl-M6K" customClass="RightCell">
-                                <rect key="frame" x="0.0" y="88" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="135" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ygm-Hl-M6K" id="TCn-YX-d0U">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -109,7 +134,10 @@
                                                 <constraint firstAttribute="width" constant="30" id="GcF-J8-MC4"/>
                                                 <constraint firstAttribute="height" constant="30" id="HvZ-V4-u5n"/>
                                             </constraints>
-                                            <state key="normal" image="car3"/>
+                                            <state key="normal" image="icon_edit"/>
+                                            <connections>
+                                                <action selector="clickEditBtn:" destination="ygm-Hl-M6K" eventType="touchUpInside" id="ZTj-Yd-neY"/>
+                                            </connections>
                                         </button>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ts-dF-TSh">
                                             <rect key="frame" x="180" y="29" width="30" height="30"/>
@@ -117,11 +145,14 @@
                                                 <constraint firstAttribute="width" constant="30" id="lrO-eh-MP7"/>
                                                 <constraint firstAttribute="height" constant="30" id="xMi-z4-YUC"/>
                                             </constraints>
-                                            <state key="normal" image="pig"/>
+                                            <state key="normal" image="icon_delete"/>
+                                            <connections>
+                                                <action selector="clickDeleteBtn:" destination="ygm-Hl-M6K" eventType="touchUpInside" id="fEl-no-CLc"/>
+                                            </connections>
                                         </button>
                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VnI-nn-tVD">
                                             <rect key="frame" x="195" y="-1" width="2" height="30"/>
-                                            <color key="backgroundColor" red="0.49755460810000002" green="1" blue="0.33833382429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="JKP-qS-dg5"/>
                                                 <constraint firstAttribute="width" constant="2" id="ZhW-5F-qLh"/>
@@ -139,6 +170,9 @@
                                                 <constraint firstAttribute="height" constant="30" id="qvW-aY-vCh"/>
                                             </constraints>
                                             <state key="normal" image="Plus"/>
+                                            <connections>
+                                                <action selector="clickMidBtn:" destination="ygm-Hl-M6K" eventType="touchUpInside" id="0Me-zn-bRy"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="消费 2000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Os2-Cq-vdz">
                                             <rect key="frame" x="218" y="34" width="149" height="21"/>
@@ -176,15 +210,16 @@
                             <outlet property="delegate" destination="VgO-Qw-yAL" id="qkQ-wm-DYi"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="TimiNote" id="ri5-MX-DdR"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cA1-yP-i93" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204" y="-22.938530734632685"/>
+            <point key="canvasLocation" x="-809" y="-228"/>
         </scene>
     </scenes>
     <resources>
         <image name="Plus" width="128" height="128"/>
-        <image name="car3" width="86" height="85"/>
-        <image name="pig" width="104" height="122"/>
+        <image name="icon_delete" width="32" height="32"/>
+        <image name="icon_edit" width="31" height="31"/>
     </resources>
 </document>
