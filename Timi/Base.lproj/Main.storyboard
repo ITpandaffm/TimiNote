@@ -218,7 +218,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Plus" width="128" height="128"/>
+        <image name="Plus" width="256" height="256"/>
         <image name="icon_delete" width="32" height="32"/>
         <image name="icon_edit" width="31" height="31"/>
     </resources>

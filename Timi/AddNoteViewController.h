@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TimiDelegate.h"
 
-@interface AddNoteViewController : UIViewController
+@interface AddNoteViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, ItemCompleteDelegate>
+
+@property (nonatomic, weak) id<ItemCompleteDelegate> delegate;
 
 @end

@@ -9,6 +9,8 @@
 #import "TimiTableViewController.h"
 #import "TimiTableViewCell.h"
 #import "AddNoteViewController.h"
+#import "TimiDelegate.h"
+
 @interface TimiTableViewController  () <TimiTableViewCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *itemArr;
@@ -41,11 +43,9 @@
 - (void)clickAddBtn
 {
     AddNoteViewController *con = [[AddNoteViewController alloc] init];
-    con.view.backgroundColor = [UIColor greenColor];
-//    [self.navigationController pushViewController:con animated:YES];
-    [self presentViewController:con animated:YES completion:^{
-        
-    }];
+    con.delegate = self;
+    con.view.backgroundColor = [UIColor whiteColor];
+    [self.navigationController pushViewController:con animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -77,6 +77,11 @@
     [cell configureCell:item];
     return cell;
 }
+
+
+
+
+
 
 
 - (void)calculateTotalValue:(TimiItem *)item
@@ -171,6 +176,15 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - ItemCompleteDelegate
+- (void)finisCompletingItem:(UIImage *)contentPic contentStr:(NSString *)contentStr totalCost:(double)cost
+{
+    TimiItem *item = [[TimiItem alloc] initWithContent:contentStr itemCost:cost itemType:TimiItemTypeOutCome];
+    [self.itemArr addObject:item];
+    [self.tableView reloadData];
+}
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -205,14 +219,15 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSLog(@"llal");
 }
-*/
+
 
 @end

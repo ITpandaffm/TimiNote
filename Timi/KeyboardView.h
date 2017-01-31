@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TimiDelegate.h"
 
 @interface KeyboardView : UIView
+
+@property (nonatomic, assign) BOOL isShrink;
+@property (weak, nonatomic) IBOutlet UIImageView *contentLogo;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+
+@property (nonatomic, weak) id<ItemCompleteDelegate>delegate;
 
 @end

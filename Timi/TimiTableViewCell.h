@@ -8,16 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "TimiItem.h"
+#import "TimiDelegate.h"
 
-
-@class TimiTableViewCell;
-
-@protocol TimiTableViewCellDelegate <NSObject>
-
-- (void)timiCellClickEditBtn:(TimiTableViewCell *)cell;
-- (void)timiCellClickDeleteBtn:(TimiTableViewCell *)cell;
-
-@end
 
 
 

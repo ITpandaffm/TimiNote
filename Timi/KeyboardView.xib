@@ -31,8 +31,8 @@
                                 <constraint firstAttribute="height" constant="30" id="KE9-Wh-knA"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7on-Kq-zvR">
-                            <rect key="frame" x="52" y="12" width="64" height="26"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="今天你剁手了吗？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7on-Kq-zvR">
+                            <rect key="frame" x="52" y="12" width="164" height="26"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -44,6 +44,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.50443509615384619" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="7on-Kq-zvR" firstAttribute="centerY" secondItem="zhE-mj-Pyv" secondAttribute="centerY" id="5LW-JQ-8OQ"/>
                         <constraint firstAttribute="trailing" secondItem="nTo-bW-oDk" secondAttribute="trailing" constant="10" id="KOg-jX-Aq4"/>
@@ -240,7 +241,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Dze-PI-ShY" firstAttribute="top" secondItem="zhE-mj-Pyv" secondAttribute="bottom" id="51t-g0-6TQ"/>
                 <constraint firstAttribute="trailing" secondItem="zhE-mj-Pyv" secondAttribute="trailing" id="6ph-fY-2tH"/>

@@ -7,16 +7,14 @@
 //
 
 #import "KeyboardView.h"
-
 @interface KeyboardView ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *contentLogo;
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentCostLabel;
+
 
 @property (nonatomic, copy) NSString *currentCost;
 @property (nonatomic, strong) UIView *alertView;
-@property (nonatomic, assign) BOOL plusStatus;
+
 @property (nonatomic, copy) NSString *lastCost;
 
 @end
@@ -24,11 +22,11 @@
 
 @implementation KeyboardView
 
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     UIView *containerView = [[[NSBundle mainBundle] loadNibNamed:@"KeyboardView" owner:self options:nil] firstObject];
+    
     containerView.frame = self.bounds;
     [self addSubview:containerView];
     return self;
@@ -48,10 +46,12 @@
 - (void)drawRect:(CGRect)rect {
     self.currentCost = self.contentCostLabel.text;
     self.lastCost = @"";
+    self.backgroundColor = [UIColor clearColor];
 }
 
 
 - (IBAction)clickKeyboard:(id)sender {
+    
     UIButton *btn = (UIButton *)sender;
     long tag = btn.tag;
 
@@ -87,13 +87,12 @@
         case 13: //点击回退键
             [self deleteKeyboardLastCharacter];
             break;
-        case 14:  //点击加号
-            self.lastCost = [self.currentCost substringFromIndex:1];
-            [self resetKeyboard];
-            self.plusStatus = TRUE;
+        case 14:  //点击加号 进行相加运算
+            [self plus];
             break;
-        case 15:  //点击ok键
-            [self outputResult];
+        case 15:  //点击ok键 完成添加 获取内容进行跳转'
+            [self.delegate finisCompletingItem:self.contentLogo.image contentStr:self.contentLabel.text totalCost:[self.contentCostLabel.text substringFromIndex:1].doubleValue];
+            
             break;
         default:
             break;
@@ -132,23 +131,26 @@
     }
 }
 
-- (void)outputResult
+- (void)plus
 {
-    if (self.plusStatus) {
+    if ([self.lastCost isEqualToString:@""]) {
+        self.lastCost = [self.currentCost substringFromIndex:1];
+        self.currentCost = @"$";
+    } else {
         if ([self.currentCost isEqualToString:@"$"]||[self.currentCost isEqualToString:@"$0"]||[self.currentCost isEqualToString:@"0."]||[self.currentCost isEqualToString:@"0.0"]) {
-        self.currentCost = [NSString stringWithFormat:@"$%@",self.lastCost];
+            self.currentCost = [NSString stringWithFormat:@"$%@",self.lastCost];
         } else {
-    
-        double lastValue = self.lastCost.doubleValue;
-        double currentValue = [self.currentCost substringFromIndex:1].doubleValue;
-        double result = lastValue + currentValue;
-        self.currentCost = [NSString stringWithFormat:@"$%.2f",result];
-        self.plusStatus = false;
-        }
+            double lastValue = self.lastCost.doubleValue;
+            double currentValue = [self.currentCost substringFromIndex:1].doubleValue;
+            double result = lastValue + currentValue;
+            self.currentCost = [NSString stringWithFormat:@"$%.2f",result];
+            self.lastCost = [self.currentCost substringFromIndex:1];
+                }
     }
+
+
+
 }
-
-
 
 - (UIView *)alertView
 {

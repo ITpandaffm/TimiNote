@@ -11,7 +11,7 @@
 
 typedef void (^TotalValueChangeBlock)(double, double);
 
-@interface TimiTableViewController : UITableViewController
+@interface TimiTableViewController<ItemCompleteDelegate> : UITableViewController
 
 @property (nonatomic, copy) TotalValueChangeBlock totalValueChangeBlock;
 
