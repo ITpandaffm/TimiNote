@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "TimiDelegate.h"
+#import "KeyboardView.h"
 
 @interface AddNoteViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, ItemCompleteDelegate>
 
 @property (nonatomic, weak) id<ItemCompleteDelegate> delegate;
+@property (nonatomic, strong) KeyboardView *keyboardView;
 
 @end

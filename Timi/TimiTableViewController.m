@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     UIView *headerView = [[[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:nil options:nil] firstObject];
     self.tableView.tableHeaderView = headerView;
     
@@ -33,11 +33,6 @@
     self.totalOutcomeLabel = [headerView viewWithTag:3];
     UIButton *addBtn = [headerView viewWithTag:1];
     [addBtn addTarget:self action:@selector(clickAddBtn) forControlEvents:UIControlEventTouchUpInside];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)clickAddBtn
@@ -49,7 +44,6 @@
 }
 
 #pragma mark - UITableViewDataSource
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -78,12 +72,6 @@
     return cell;
 }
 
-
-
-
-
-
-
 - (void)calculateTotalValue:(TimiItem *)item
 {
     if (item.type == TimiItemTypeIncome) {
@@ -95,6 +83,71 @@
     self.totalOutcomeLabel.text = [NSString stringWithFormat:@"%.2f",self.totalOutcome];
 }
 
+
+//从效率来讲应该是定义为总收入总支出两个属性，每次修改的时候直接在原有基础上修改就好
+//但目前 重新算一遍就好了
+- (void)calculateTotalValue
+{
+    double totalIncome,totalOutcome=0;
+    for (TimiItem *item in self.itemArr) {
+        if (item.type == TimiItemTypeIncome)
+        {
+            totalIncome += item.cost;
+        } else if (item.type == TimiItemTypeOutCome)
+        {
+            totalOutcome += item.cost;
+        }
+    }
+    if (self.totalValueChangeBlock) {
+        self.totalValueChangeBlock(totalIncome, totalOutcome);
+    }
+}
+
+#pragma mark TimiTableViewCellDelegate
+- (void)timiCellClickEditBtn:(TimiTableViewCell *)cell
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    TimiItem *item = self.itemArr[indexPath.row];
+    
+    AddNoteViewController *addCon = [[AddNoteViewController alloc] init];
+    addCon.delegate = self;
+    addCon.view.backgroundColor = [UIColor whiteColor];
+    addCon.keyboardView.contentLabel.text = item.content;
+    addCon.keyboardView.contentCostLabel.text = [NSString stringWithFormat:@"$%.2f",item.cost];
+    [self.navigationController pushViewController:addCon animated:YES];
+}
+
+- (void)timiCellClickDeleteBtn:(TimiTableViewCell *)cell
+{
+    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"FBI WARNING" message:@"确定要删除？" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        [self.itemArr removeObjectAtIndex:indexPath.row];
+        
+        self.totalOutcome = 0;
+        self.totalIncome = 0;
+        [self.tableView reloadData];
+    }]; //UIAlertAction相当于一种封装了触发方法的选项按钮
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }]; //UIAlertAction相当于一种封装了触发方法的选项按钮
+    [alertView addAction:action];
+    [alertView addAction:action2];
+    //    [self.navigationController pushViewController:alertView animated:YES];
+    [self presentViewController:alertView animated:YES completion:^{
+        
+    }];
+
+}
+
+#pragma mark - ItemCompleteDelegate
+- (void)finisCompletingItem:(UIImage *)contentPic contentStr:(NSString *)contentStr totalCost:(double)cost
+{
+    TimiItem *item = [[TimiItem alloc] initWithContent:contentStr itemCost:cost itemType:TimiItemTypeOutCome];
+    [self.itemArr addObject:item];
+    [self.tableView reloadData];
+}
 
 
 #pragma mark 懒加载
@@ -119,7 +172,7 @@
         TimiItem *item13 = [[TimiItem alloc] initWithContent:@"工作" itemCost:380 itemType:TimiItemTypeOutCome];
         TimiItem *item14 = [[TimiItem alloc] initWithContent:@"运动" itemCost:380 itemType:TimiItemTypeOutCome];
         TimiItem *item15 = [[TimiItem alloc] initWithContent:@"普通" itemCost:380 itemType:TimiItemTypeOutCome];
-
+        
         [_itemArr addObject:item0];
         [_itemArr addObject:item1];
         [_itemArr addObject:item2];
@@ -136,89 +189,10 @@
         [_itemArr addObject:item13];
         [_itemArr addObject:item14];
         [_itemArr addObject:item15];
-      
+        
     }
     return _itemArr;
 }
-
-//从效率来讲应该是定义为总收入总支出两个属性，每次修改的时候直接在原有基础上修改就好
-//但目前 重新算一遍就好了
-- (void)calculateTotalValue
-{
-    double totalIncome,totalOutcome=0;
-    for (TimiItem *item in self.itemArr) {
-        if (item.type == TimiItemTypeIncome)
-        {
-            totalIncome += item.cost;
-        } else if (item.type == TimiItemTypeOutCome)
-        {
-            totalOutcome += item.cost;
-        }
-    }
-    if (self.totalValueChangeBlock) {
-        self.totalValueChangeBlock(totalIncome, totalOutcome);
-    }
-}
-
-#pragma mark TimiTableViewCellDelegate
-- (void)timiCellClickEditBtn:(TimiTableViewCell *)cell
-{
-    
-}
-
-- (void)timiCellClickDeleteBtn:(TimiTableViewCell *)cell
-{
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    [self.itemArr removeObjectAtIndex:indexPath.row];
-    
-    self.totalOutcome = 0;
-    self.totalIncome = 0;
-    [self.tableView reloadData];
-}
-
-#pragma mark - ItemCompleteDelegate
-- (void)finisCompletingItem:(UIImage *)contentPic contentStr:(NSString *)contentStr totalCost:(double)cost
-{
-    TimiItem *item = [[TimiItem alloc] initWithContent:contentStr itemCost:cost itemType:TimiItemTypeOutCome];
-    [self.itemArr addObject:item];
-    [self.tableView reloadData];
-}
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Navigation
 

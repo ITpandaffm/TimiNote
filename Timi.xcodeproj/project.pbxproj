@@ -10,7 +10,6 @@
 		8B5E92491E3D92EC001E2CFA /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E92481E3D92EC001E2CFA /* HeaderView.xib */; };
 		8B5E92511E3E06B0001E2CFA /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E924F1E3E06B0001E2CFA /* KeyboardView.xib */; };
 		8B5E92551E3E3F71001E2CFA /* AddNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E92531E3E3F71001E2CFA /* AddNoteViewController.m */; };
-		8B5E92561E3E3F71001E2CFA /* AddNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E92541E3E3F71001E2CFA /* AddNoteViewController.xib */; };
 		8B5E925E1E3F235A001E2CFA /* KeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E925D1E3F235A001E2CFA /* KeyboardView.m */; };
 		8B5E92601E3F3E2E001E2CFA /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E925F1E3F3E2E001E2CFA /* AlertView.xib */; };
 		8B5E92641E408647001E2CFA /* TimiItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E92621E408647001E2CFA /* TimiItemCollectionViewCell.m */; };
@@ -49,7 +48,6 @@
 		8B5E924F1E3E06B0001E2CFA /* KeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
 		8B5E92521E3E3F71001E2CFA /* AddNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNoteViewController.h; sourceTree = "<group>"; };
 		8B5E92531E3E3F71001E2CFA /* AddNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNoteViewController.m; sourceTree = "<group>"; };
-		8B5E92541E3E3F71001E2CFA /* AddNoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNoteViewController.xib; sourceTree = "<group>"; };
 		8B5E925C1E3F235A001E2CFA /* KeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardView.h; sourceTree = "<group>"; };
 		8B5E925D1E3F235A001E2CFA /* KeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardView.m; sourceTree = "<group>"; };
 		8B5E925F1E3F3E2E001E2CFA /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
@@ -117,6 +115,21 @@
 			name = "第一个界面";
 			sourceTree = "<group>";
 		};
+		8B5E92691E410CC9001E2CFA /* 第二个界面 */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E925F1E3F3E2E001E2CFA /* AlertView.xib */,
+				8B5E924F1E3E06B0001E2CFA /* KeyboardView.xib */,
+				8B5E925C1E3F235A001E2CFA /* KeyboardView.h */,
+				8B5E925D1E3F235A001E2CFA /* KeyboardView.m */,
+				8B5E92611E408647001E2CFA /* TimiItemCollectionViewCell.h */,
+				8B5E92621E408647001E2CFA /* TimiItemCollectionViewCell.m */,
+				8B5E92521E3E3F71001E2CFA /* AddNoteViewController.h */,
+				8B5E92531E3E3F71001E2CFA /* AddNoteViewController.m */,
+			);
+			name = "第二个界面";
+			sourceTree = "<group>";
+		};
 		8B876C2D1E330656009A6E7E = {
 			isa = PBXGroup;
 			children = (
@@ -143,15 +156,7 @@
 				8B876C3C1E330656009A6E7E /* AppDelegate.h */,
 				8B876C3D1E330656009A6E7E /* AppDelegate.m */,
 				8B5E92681E40F272001E2CFA /* TimiDelegate.h */,
-				8B5E925F1E3F3E2E001E2CFA /* AlertView.xib */,
-				8B5E924F1E3E06B0001E2CFA /* KeyboardView.xib */,
-				8B5E925C1E3F235A001E2CFA /* KeyboardView.h */,
-				8B5E925D1E3F235A001E2CFA /* KeyboardView.m */,
-				8B5E92611E408647001E2CFA /* TimiItemCollectionViewCell.h */,
-				8B5E92621E408647001E2CFA /* TimiItemCollectionViewCell.m */,
-				8B5E92521E3E3F71001E2CFA /* AddNoteViewController.h */,
-				8B5E92531E3E3F71001E2CFA /* AddNoteViewController.m */,
-				8B5E92541E3E3F71001E2CFA /* AddNoteViewController.xib */,
+				8B5E92691E410CC9001E2CFA /* 第二个界面 */,
 				8B5E92661E408665001E2CFA /* 第一个界面 */,
 				8BFA60CB1E38AB9100BFE8A7 /* TimiItem.h */,
 				8BFA60CC1E38AB9100BFE8A7 /* TimiItem.m */,
@@ -304,7 +309,6 @@
 				8B5E92511E3E06B0001E2CFA /* KeyboardView.xib in Resources */,
 				8B876C491E330656009A6E7E /* Assets.xcassets in Resources */,
 				8B876C441E330656009A6E7E /* Main.storyboard in Resources */,
-				8B5E92561E3E3F71001E2CFA /* AddNoteViewController.xib in Resources */,
 				8B5E92491E3D92EC001E2CFA /* HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

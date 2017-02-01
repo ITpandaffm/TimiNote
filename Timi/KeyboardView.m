@@ -9,7 +9,6 @@
 #import "KeyboardView.h"
 @interface KeyboardView ()
 
-@property (weak, nonatomic) IBOutlet UILabel *contentCostLabel;
 
 
 @property (nonatomic, copy) NSString *currentCost;
@@ -47,6 +46,7 @@
     self.currentCost = self.contentCostLabel.text;
     self.lastCost = @"";
     self.backgroundColor = [UIColor clearColor];
+    
 }
 
 
@@ -152,6 +152,7 @@
 
 }
 
+
 - (UIView *)alertView
 {
     if (!_alertView)
@@ -162,6 +163,7 @@
     }
     return _alertView;
 }
+
 
 
 @end
