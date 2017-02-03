@@ -9,8 +9,6 @@
 #import "KeyboardView.h"
 @interface KeyboardView ()
 
-
-
 @property (nonatomic, copy) NSString *currentCost;
 @property (nonatomic, strong) UIView *alertView;
 
@@ -27,6 +25,7 @@
     UIView *containerView = [[[NSBundle mainBundle] loadNibNamed:@"KeyboardView" owner:self options:nil] firstObject];
     
     containerView.frame = self.bounds;
+    [self.contentLogo.image setAccessibilityIdentifier:@"keyboard_flower.png"];
     [self addSubview:containerView];
     return self;
 }
@@ -35,6 +34,7 @@
 {
     self = [super initWithCoder:aDecoder];
     UIView *containerView = [[[NSBundle mainBundle] loadNibNamed:@"KeyboardView" owner:self options:nil] firstObject];
+    [self.contentLogo.image setAccessibilityIdentifier:@"keyboard_flower.png"];
     [self addSubview:containerView];
     return self;
 }
@@ -46,10 +46,10 @@
     self.currentCost = self.contentCostLabel.text;
     self.lastCost = @"";
     self.backgroundColor = [UIColor clearColor];
-    
 }
 
 
+#pragma mark - keyboard Methods
 - (IBAction)clickKeyboard:(id)sender {
     
     UIButton *btn = (UIButton *)sender;
@@ -91,7 +91,7 @@
             [self plus];
             break;
         case 15:  //点击ok键 完成添加 获取内容进行跳转'
-            [self.delegate finisCompletingItem:self.contentLogo.image contentStr:self.contentLabel.text totalCost:[self.contentCostLabel.text substringFromIndex:1].doubleValue];
+            [self.delegate finisCompletingItem:[self.contentLogo.image accessibilityIdentifier] contentStr:self.contentLabel.text totalCost:[self.contentCostLabel.text substringFromIndex:1].doubleValue timeStamp:[NSDate date]];
             
             break;
         default:
@@ -147,8 +147,6 @@
             self.lastCost = [self.currentCost substringFromIndex:1];
                 }
     }
-
-
 
 }
 

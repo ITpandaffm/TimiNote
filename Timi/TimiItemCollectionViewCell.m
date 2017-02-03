@@ -28,11 +28,11 @@
 }
 
 
-
 - (void)setCellImage:(UIImage *)cellImage
 {
     if (_cellImage != cellImage)
     {
+        [_cellImage setAccessibilityIdentifier:[cellImage accessibilityIdentifier]];
         _cellImage = cellImage;
     }
     self.cellPic.image = cellImage;

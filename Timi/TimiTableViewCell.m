@@ -14,7 +14,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (weak, nonatomic) IBOutlet UIButton *editBtn;
+
 @property (nonatomic, assign) BOOL isExpand;
+@property (weak, nonatomic) IBOutlet UIView *dotView;
+@property (weak, nonatomic) IBOutlet UILabel *timeStampLabel;
+@property (nonatomic, strong) NSDate *currentDate;
 
 @end
 
@@ -26,60 +30,22 @@
 {
     if (item)
     {
-        if ([item.content isEqualToString:@"工资"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_salary.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"日常"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_daily.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"就餐"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_dinner.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"零食"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_food.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"充值"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_phoneCharge.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"购物"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_shopping.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"娱乐"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_chess.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"雪糕"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_icecream.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"生日"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_birthday.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"鞋帽"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_shoe.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"聚会"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_party.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"买礼物"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_gift.png"] forState:UIControlStateNormal];
+        if (item.isHeader) {
+            self.timeStampLabel.text = [item.timeStamp.description substringToIndex:10];
+            self.dotView.hidden = false;
+            self.dotView.layer.cornerRadius = 2.5;
+        } else {
+            self.timeStampLabel.hidden = YES;
+            self.dotView.hidden = YES;
         }
-         else if ([item.content isEqualToString:@"收入"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_income.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"工作"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_work.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"运动"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_sport.png"] forState:UIControlStateNormal];
-        } else if ([item.content isEqualToString:@"普通"])
-        {
-            [self.addBtn setImage:[UIImage imageNamed:@"icon_normal.png"] forState:UIControlStateNormal];
-        }
+        
+        [self.addBtn setImage:[UIImage imageNamed:item.logo] forState:UIControlStateNormal];
         [self setValue:[NSString stringWithFormat:@"%@ %.2f",item.content,item.cost] forKeyPath:@"descriptionLabel.text"];
         [self close];
+        
     }
 }
+
 
 //上面的setValue:fotKeyPath:如果keyPath找不到的话 就会调用下面的这个方法，所以重写一些
 - (void)setNilValueForKey:(NSString *)key
@@ -146,7 +112,13 @@
 
 
 #pragma mark 懒加载
-
+//- (NSDate *)currentDate
+//{
+//    if(!_currentDate) {
+//        _currentDate = [NSDate date];
+//    }
+//    return _currentDate;
+//}
 @end
 
 

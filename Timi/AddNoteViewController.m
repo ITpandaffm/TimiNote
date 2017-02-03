@@ -89,7 +89,9 @@ static NSString *cellIdentifier = @"collectionViewCell";
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TimiItemCollectionViewCell *cell = [TimiItemCollectionViewCell createCell:collectionView cellForItemAtIndexPath:indexPath reuseIdentifier:cellIdentifier];
     cell.cellLabel.text = self.itemNameArr[indexPath.item];
-    cell.cellImage = [UIImage imageNamed:self.itemPicArr[indexPath.item]];
+    UIImage *image = [UIImage imageNamed:self.itemPicArr[indexPath.item]];
+    [image setAccessibilityIdentifier:self.itemPicArr[indexPath.item]];
+    cell.cellImage = image;
 //    cell.backgroundColor = [UIColor lightGrayColor];
     return cell;
 }
@@ -174,9 +176,9 @@ static NSString *cellIdentifier = @"collectionViewCell";
 
 
 #pragma mark - ItemCompleteDelegate
-- (void)finisCompletingItem:(UIImage *)contentPic contentStr:(NSString *)contentStr totalCost:(double)cost
+- (void)finisCompletingItem:(NSString *)contentPic contentStr:(NSString *)contentStr totalCost:(double)cost timeStamp:(NSDate *)date
 {
-    [self.delegate finisCompletingItem:contentPic contentStr:contentStr totalCost:cost];
+    [self.delegate finisCompletingItem:contentPic contentStr:contentStr totalCost:cost timeStamp:[NSDate date]];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -219,6 +221,13 @@ static NSString *cellIdentifier = @"collectionViewCell";
     }
 }
 
+#pragma mark UINavigationControllerDelegate
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
+{
+    if (operation==UINavigationControllerOperationPush) {
+        return self.pushAnimation
+    }
+}
 
 #pragma mark - 懒加载
 - (UICollectionView *)collectionView

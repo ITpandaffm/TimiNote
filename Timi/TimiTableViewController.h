@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 
-typedef void (^TotalValueChangeBlock)(double, double);
 
 @interface TimiTableViewController<ItemCompleteDelegate> : UITableViewController
 
-@property (nonatomic, copy) TotalValueChangeBlock totalValueChangeBlock;
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+
 
 @end

@@ -26,12 +26,13 @@
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="keyboard_flower" translatesAutoresizingMaskIntoConstraints="NO" id="sfC-6I-yms">
                             <rect key="frame" x="8" y="8" width="30" height="30"/>
+                            <accessibility key="accessibilityConfiguration" identifier="keyboard_flower.png"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="EtP-Q8-zBO"/>
                                 <constraint firstAttribute="height" constant="30" id="KE9-Wh-knA"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="今天你剁手了吗？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7on-Kq-zvR">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="普通" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7on-Kq-zvR">
                             <rect key="frame" x="52" y="12" width="164" height="26"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>

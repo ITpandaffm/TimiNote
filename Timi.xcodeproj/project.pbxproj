@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B2B4F2E1E43B32A00EE8F69 /* PopTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B4F2D1E43B32A00EE8F69 /* PopTransition.m */; };
 		8B5E92491E3D92EC001E2CFA /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E92481E3D92EC001E2CFA /* HeaderView.xib */; };
 		8B5E92511E3E06B0001E2CFA /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E924F1E3E06B0001E2CFA /* KeyboardView.xib */; };
 		8B5E92551E3E3F71001E2CFA /* AddNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E92531E3E3F71001E2CFA /* AddNoteViewController.m */; };
@@ -44,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B2B4F2C1E43B32A00EE8F69 /* PopTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopTransition.h; sourceTree = "<group>"; };
+		8B2B4F2D1E43B32A00EE8F69 /* PopTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopTransition.m; sourceTree = "<group>"; };
 		8B5E92481E3D92EC001E2CFA /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		8B5E924F1E3E06B0001E2CFA /* KeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
 		8B5E92521E3E3F71001E2CFA /* AddNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNoteViewController.h; sourceTree = "<group>"; };
@@ -130,6 +133,18 @@
 			name = "第二个界面";
 			sourceTree = "<group>";
 		};
+		8B5E926A1E4338E8001E2CFA /* Comman */ = {
+			isa = PBXGroup;
+			children = (
+				8B5E92681E40F272001E2CFA /* TimiDelegate.h */,
+				8BFA60CB1E38AB9100BFE8A7 /* TimiItem.h */,
+				8BFA60CC1E38AB9100BFE8A7 /* TimiItem.m */,
+				8B2B4F2C1E43B32A00EE8F69 /* PopTransition.h */,
+				8B2B4F2D1E43B32A00EE8F69 /* PopTransition.m */,
+			);
+			name = Comman;
+			sourceTree = "<group>";
+		};
 		8B876C2D1E330656009A6E7E = {
 			isa = PBXGroup;
 			children = (
@@ -155,11 +170,9 @@
 			children = (
 				8B876C3C1E330656009A6E7E /* AppDelegate.h */,
 				8B876C3D1E330656009A6E7E /* AppDelegate.m */,
-				8B5E92681E40F272001E2CFA /* TimiDelegate.h */,
+				8B5E926A1E4338E8001E2CFA /* Comman */,
 				8B5E92691E410CC9001E2CFA /* 第二个界面 */,
 				8B5E92661E408665001E2CFA /* 第一个界面 */,
-				8BFA60CB1E38AB9100BFE8A7 /* TimiItem.h */,
-				8BFA60CC1E38AB9100BFE8A7 /* TimiItem.m */,
 				8B876C481E330656009A6E7E /* Assets.xcassets */,
 				8B876C4A1E330656009A6E7E /* LaunchScreen.storyboard */,
 				8B876C4D1E330656009A6E7E /* Info.plist */,
@@ -338,6 +351,7 @@
 				8B876C471E330656009A6E7E /* Timi.xcdatamodeld in Sources */,
 				8B876C741E3334BA009A6E7E /* TimiTableViewController.m in Sources */,
 				8B876C3E1E330656009A6E7E /* AppDelegate.m in Sources */,
+				8B2B4F2E1E43B32A00EE8F69 /* PopTransition.m in Sources */,
 				8B876C711E331211009A6E7E /* TimiTableViewCell.m in Sources */,
 				8B5E92641E408647001E2CFA /* TimiItemCollectionViewCell.m in Sources */,
 				8B5E925E1E3F235A001E2CFA /* KeyboardView.m in Sources */,

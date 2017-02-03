@@ -10,15 +10,16 @@
 
 @implementation TimiItem
 
-
-- (instancetype)initWithContent:(NSString *)content itemCost:(double)cost itemType:(TimiItemType)type
+- (instancetype)initWithContent:(NSString *)content itemCost:(double)cost logoStr:(NSString *)logoStr insertTime:(NSDate *)timeStamp contentType:(BOOL )isOutcome
 {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         self.content = content;
         self.cost = cost;
-        _type = type;
+        self.logo = logoStr;
+        self.timeStamp = [NSDate date];
+        self.isOutcome = isOutcome;
+        self.isHeader = FALSE;
     }
     return self;
 }
@@ -31,7 +32,10 @@
     {
         self.content = @"嗯？忘记写东西了";
         self.cost = 0.00;
-        _type = TimiItemTypeOutCome;
+        self.logo = @"icon_normal";
+        self.timeStamp = [NSDate date];
+        self.isOutcome = YES;
+        self.isHeader = FALSE;
     }
     return self;
 }

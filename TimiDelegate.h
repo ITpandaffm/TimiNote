@@ -17,12 +17,8 @@
 
 @end
 
-
-
 @protocol ItemCompleteDelegate <NSObject>
 
-
-
-- (void)finisCompletingItem:(UIImage *)contentPic contentStr:(NSString *)contentStr totalCost:(double )cost;
+- (void)finisCompletingItem:(NSString *)contentPic contentStr:(NSString *)contentStr totalCost:(double )cost timeStamp:(NSDate *)date;
 
 @end
