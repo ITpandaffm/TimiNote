@@ -172,6 +172,13 @@
     self.editItemNum = indexPath.row;
     self.editItemTimeStamp = item.timeStamp;
     
+    CATransition* transition = [CATransition animation];
+    transition.type = @"pageCurl";//可更改为其他方式
+    transition.subtype = kCATransitionFromBottom;//可更改为其他方式
+    transition.duration=0.5;
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    
+    
     [self.navigationController pushViewController:addCon animated:YES];
 }
 
