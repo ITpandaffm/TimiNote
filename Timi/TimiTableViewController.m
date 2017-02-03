@@ -17,6 +17,9 @@
     再来个3dtouch？ 反正要做到弹出个新界面 可以修改item的属性，用户上传图片 自定义字符串内容，还有类型啥的，都写死了没意思。
  
  本来转场动画想用的自定义动画的 结果折腾到最后 发现还有CATransition这个类 简单粗暴就好了 就懒得自定义了 虽然自定义的话 还有交互 有意思
+ 
+ 发现了bug  当拉下去 再拉回来的时候重用了cell 这时候 就不显示timeStamp了 因为设置了currentDate
+ !!想到了！  应该换个思路！ 在一开始数组排序的时候，就应该遍历一遍把数组都标记好！
 */
 #import "TimiTableViewController.h"
 #import "TimiTableViewCell.h"
@@ -39,7 +42,7 @@
 @property (nonatomic, strong) NSDate *editItemTimeStamp;
 
 @property (nonatomic, strong) NSDate *currentDate;
-
+@property (nonatomic, strong) NSMutableArray *headerIndexArr;
 
 @end
 
@@ -67,9 +70,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-    
-    
     [self selectionOrder];
     
     NSManagedObject *object = self.itemArr[indexPath.row];
@@ -80,7 +80,6 @@
     NSDate *date = [object valueForKey:@"timeStamp"];
     
     TimiItem *item = [[TimiItem alloc] initWithContent:content itemCost:cost.doubleValue logoStr:logo insertTime:date contentType:isOutcome.boolValue];
-    
     
     NSString *identifier = @"";
     if (item.isOutcome) {
@@ -94,9 +93,14 @@
         cell.delegate = self;
     }
     
-    if ([self judgeIsHeader:item.timeStamp]) {
-        item.isHeader = YES;
+    [self markHeaderItem];
+    
+    for (NSNumber *num in self.headerIndexArr) {
+        if (indexPath.row == num.integerValue) {
+            item.isHeader = YES;
+        }
     }
+    
 //    [self calculateTotalValue:item]; //不能每次加载一个就加，因为有复用。。
     [cell configureCell:item];
     
@@ -261,13 +265,28 @@
         int j = 0;
         for (j = i; j > 0; j--) {
             NSDate *jdate = [self.itemArr[j-1] valueForKey:@"timeStamp"];
-            NSDate *resultDate = [idate laterDate:jdate];
+            NSDate *resultDate = [idate earlierDate:jdate];
             if ([resultDate isEqualToDate:idate]) {
                 break;
             }
             self.itemArr[j] = self.itemArr[j-1];
         }
         self.itemArr[j] = iobject;
+    }
+}
+
+//把是header的都标记出来并把index存到数组headerIndexArr里
+- (void)markHeaderItem
+{
+    self.currentDate = nil;
+    [self.headerIndexArr removeAllObjects];
+    for (int i = 0; i < self.itemArr.count; i++) {
+        NSManagedObject *object = self.itemArr[i];
+        NSDate *date = [object valueForKey:@"timeStamp"];
+        if ([self judgeIsHeader:date]) {
+            //把是header的序号都标记好 收集起来
+            [self.headerIndexArr addObject:[NSNumber numberWithInt:i]];
+        }
     }
 }
 
@@ -293,6 +312,7 @@
             return FALSE;
         }
 }
+
 
 #pragma mark 懒加载
 - (NSMutableArray *)itemArr
@@ -331,5 +351,12 @@
     return _managedObjectContext;
 }
 
+- (NSMutableArray *)headerIndexArr
+{
+    if (!_headerIndexArr) {
+        _headerIndexArr = [NSMutableArray array];
+    }
+    return _headerIndexArr;
+}
 
 @end

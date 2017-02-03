@@ -91,7 +91,8 @@
             [self plus];
             break;
         case 15:  //点击ok键 完成添加 获取内容进行跳转'
-            [self.delegate finisCompletingItem:[self.contentLogo.image accessibilityIdentifier] contentStr:self.contentLabel.text totalCost:[self.contentCostLabel.text substringFromIndex:1].doubleValue timeStamp:[NSDate date]];
+            [self clickOk];
+            
             
             break;
         default:
@@ -106,13 +107,7 @@
     if (self.currentCost.length <= 14) {
         self.currentCost = [self.currentCost stringByAppendingString:str];
     } else {
-        self.alertView.hidden = false;
-        [UIView animateWithDuration:1 animations:^{
-            self.alertView.alpha = 0;
-        } completion:^(BOOL finished) {
-            self.alertView.alpha = 1;
-            self.alertView.hidden = true;
-        }];
+        [self showAlertView];
     }
 
 }
@@ -148,6 +143,28 @@
                 }
     }
 
+}
+
+- (void)clickOk
+{
+    double cost = [self.contentCostLabel.text substringFromIndex:1].doubleValue;
+    if (cost) {
+        [self.delegate finisCompletingItem:[self.contentLogo.image accessibilityIdentifier] contentStr:self.contentLabel.text totalCost:cost timeStamp:[NSDate date]];
+    } else {
+        [self showAlertView];
+    }
+}
+
+//弹出提示框
+- (void)showAlertView
+{
+    self.alertView.hidden = false;
+    [UIView animateWithDuration:1 animations:^{
+        self.alertView.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.alertView.alpha = 1;
+        self.alertView.hidden = true;
+    }];
 }
 
 

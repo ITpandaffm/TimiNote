@@ -32,6 +32,7 @@
     {
         if (item.isHeader) {
             self.timeStampLabel.text = [item.timeStamp.description substringToIndex:10];
+            self.timeStampLabel.hidden = false;
             self.dotView.hidden = false;
             self.dotView.layer.cornerRadius = 2.5;
         } else {
