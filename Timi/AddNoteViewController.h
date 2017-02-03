@@ -10,10 +10,10 @@
 #import "TimiDelegate.h"
 #import "KeyboardView.h"
 #import "AppDelegate.h"
-#import "PopTransition.h"
 
 
-@interface AddNoteViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, ItemCompleteDelegate,UINavigationControllerDelegate>
+
+@interface AddNoteViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, ItemCompleteDelegate>
 
 @property (nonatomic, weak) id<ItemCompleteDelegate> delegate;
 @property (nonatomic, strong) KeyboardView *keyboardView;

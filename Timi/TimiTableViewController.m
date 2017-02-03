@@ -5,7 +5,19 @@
 //  Created by ffm on 17/1/21.
 //  Copyright © 2017年 ITPanda. All rights reserved.
 //
-
+/*
+ 后期开发  日历功能，在点击ok的时候，获取日历的date，传进去就好，其他都实现好了目前是直接[NSDate date]
+ 在接收的时候，如果是edit状态的话，就采用原来的date，如果不是，就按传回来的date
+ 
+ 学完网络之后，弄个登录 登录完 弄个方框显示在某个角落，可以修改个人信息啥的
+ 
+ collection 的item 也可以写到数据库里，不过感觉跟写在数组里一样 差不多功夫
+ 
+ 大后期：长按调整位置，collecitonView可以实现，简书上有，识别长按手势，然后动画抖动，然后移动的时候，如果落在路径上就改变啥的。。还可以删除
+    再来个3dtouch？ 反正要做到弹出个新界面 可以修改item的属性，用户上传图片 自定义字符串内容，还有类型啥的，都写死了没意思。
+ 
+ 本来转场动画想用的自定义动画的 结果折腾到最后 发现还有CATransition这个类 简单粗暴就好了 就懒得自定义了 虽然自定义的话 还有交互 有意思
+*/
 #import "TimiTableViewController.h"
 #import "TimiTableViewCell.h"
 #import "AddNoteViewController.h"
@@ -28,6 +40,7 @@
 
 @property (nonatomic, strong) NSDate *currentDate;
 
+
 @end
 
 @implementation TimiTableViewController
@@ -37,6 +50,9 @@
     
     [self headerViewInit];
     [self refreshData];
+    
+
+
 }
 
 #pragma mark - UITableViewDataSource
@@ -50,6 +66,9 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    
     
     [self selectionOrder];
     
@@ -78,7 +97,6 @@
     if ([self judgeIsHeader:item.timeStamp]) {
         item.isHeader = YES;
     }
-    
 //    [self calculateTotalValue:item]; //不能每次加载一个就加，因为有复用。。
     [cell configureCell:item];
     
@@ -101,10 +119,17 @@
 
 - (void)clickAddBtn
 {
+    CATransition* transition = [CATransition animation];
+    transition.type = @"suckEffect";//可更改为其他方式
+    transition.subtype = kCATransitionFromBottom;//可更改为其他方式
+    transition.duration=0.3;
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    
     AddNoteViewController *con = [[AddNoteViewController alloc] init];
     con.delegate = self;
     con.view.backgroundColor = [UIColor whiteColor];
     [self.navigationController pushViewController:con animated:YES];
+
 }
 
 //从效率来讲应该是定义为总收入总支出两个属性，每次修改的时候直接在原有基础上修改就好
@@ -160,8 +185,6 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         [self.managedObjectContext deleteObject:self.itemArr[indexPath.row]];
         [self.managedObjectContext save:nil];
-        self.totalOutcome = 0;
-        self.totalIncome = 0;
         [self refreshData];
     }]; //UIAlertAction相当于一种封装了触发方法的选项按钮
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -300,5 +323,6 @@
     }
     return _managedObjectContext;
 }
+
 
 @end

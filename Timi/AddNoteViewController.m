@@ -9,10 +9,12 @@
 #import "AddNoteViewController.h"
 #import "TimiItemCollectionViewCell.h"
 
+#import "TimiTableViewController.h"
+
 static NSString *cellIdentifier = @"collectionViewCell";
 
 
-@interface AddNoteViewController ()
+@interface AddNoteViewController () 
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *itemNameArr;
@@ -22,6 +24,7 @@ static NSString *cellIdentifier = @"collectionViewCell";
 @property (nonatomic, strong) UIImageView *cellImageView;
 @property (nonatomic, strong) TimiItemCollectionViewCell *selectedCell;
 
+//@property (nonatomic, strong) DismissTransition *dismissTransition;
 
 @end
 
@@ -36,6 +39,14 @@ static NSString *cellIdentifier = @"collectionViewCell";
    
 }
 
+//- (instancetype)init
+//{
+//    self = [super init];
+//    if (self) {
+////        _dismissTransition = [DismissTransition new];
+//    }
+//    return self;
+//}
 
 #pragma mark - navigationItem methods
 - (void)initNavigationItem
@@ -85,14 +96,13 @@ static NSString *cellIdentifier = @"collectionViewCell";
     return self.itemNameArr.count;
 }
 
-// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TimiItemCollectionViewCell *cell = [TimiItemCollectionViewCell createCell:collectionView cellForItemAtIndexPath:indexPath reuseIdentifier:cellIdentifier];
     cell.cellLabel.text = self.itemNameArr[indexPath.item];
     UIImage *image = [UIImage imageNamed:self.itemPicArr[indexPath.item]];
     [image setAccessibilityIdentifier:self.itemPicArr[indexPath.item]];
     cell.cellImage = image;
-//    cell.backgroundColor = [UIColor lightGrayColor];
     return cell;
 }
 
@@ -132,11 +142,12 @@ static NSString *cellIdentifier = @"collectionViewCell";
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:CGPointMake(self.cellImageView.center.x-50, self.cellImageView.center.y-50)];
     CGPoint logoLocation;
-    if (!self.keyboardView.isShrink) {
-        logoLocation = CGPointMake(self.keyboardView.contentLogo.frame.origin.x+10, self.view.bounds.size.height-self.keyboardView.bounds.size.height-45);
-    } else if (self.keyboardView.isShrink) {
-        logoLocation = CGPointMake(self.keyboardView.contentLogo.frame.origin.x+10, self.view.bounds.size.height-50-45);
-    }
+    CGPoint imageLocation = self.keyboardView.contentLogo.center;
+
+    //用这个方法可以直接转化在不同view之间的坐标！！！神奇！
+    logoLocation = [self.collectionView convertPoint:imageLocation fromView:self.keyboardView];
+
+    
     [path addQuadCurveToPoint:logoLocation controlPoint:logoLocation];
     bezierTranslateAnimation.keyPath = @"position";
     bezierTranslateAnimation.path = path.CGPath;
@@ -157,6 +168,7 @@ static NSString *cellIdentifier = @"collectionViewCell";
     {
         self.keyboardView.contentLogo.image = self.selectedCell.cellImage;
         self.keyboardView.contentLabel.text = self.selectedCell.cellLabel.text;
+        [self.cellImageView removeFromSuperview];
     }
 }
 
@@ -178,7 +190,15 @@ static NSString *cellIdentifier = @"collectionViewCell";
 #pragma mark - ItemCompleteDelegate
 - (void)finisCompletingItem:(NSString *)contentPic contentStr:(NSString *)contentStr totalCost:(double)cost timeStamp:(NSDate *)date
 {
+    
+    CATransition* transition = [CATransition animation];
+    transition.type = @"rippleEffect";//可更改为其他方式
+    transition.subtype = kCATransitionFromBottom;//可更改为其他方式
+    transition.duration=0.8;
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+
     [self.delegate finisCompletingItem:contentPic contentStr:contentStr totalCost:cost timeStamp:[NSDate date]];
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -221,13 +241,6 @@ static NSString *cellIdentifier = @"collectionViewCell";
     }
 }
 
-#pragma mark UINavigationControllerDelegate
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
-{
-    if (operation==UINavigationControllerOperationPush) {
-        return self.pushAnimation
-    }
-}
 
 #pragma mark - 懒加载
 - (UICollectionView *)collectionView
