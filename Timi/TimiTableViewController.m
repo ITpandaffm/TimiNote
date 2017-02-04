@@ -18,8 +18,9 @@
  
  本来转场动画想用的自定义动画的 结果折腾到最后 发现还有CATransition这个类 简单粗暴就好了 就懒得自定义了 虽然自定义的话 还有交互 有意思
  
- 发现了bug  当拉下去 再拉回来的时候重用了cell 这时候 就不显示timeStamp了 因为设置了currentDate
+ 2.3 发现了bug  当拉下去 再拉回来的时候重用了cell 这时候 就不显示timeStamp了 因为设置了currentDate
  !!想到了！  应该换个思路！ 在一开始数组排序的时候，就应该遍历一遍把数组都标记好！
+ 2.4 又发现bug 一觉醒来 打开app 发现上面的日期变成了 2.4 自己更新了！ 然后查了查item的类 发现是之前的没改回来 init初始化的时候 默认[NSDate date] 了 怪不得时间一直怪怪的。
 */
 #import "TimiTableViewController.h"
 #import "TimiTableViewCell.h"

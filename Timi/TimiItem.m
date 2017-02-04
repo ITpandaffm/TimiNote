@@ -17,7 +17,7 @@
         self.content = content;
         self.cost = cost;
         self.logo = logoStr;
-        self.timeStamp = [NSDate date];
+        self.timeStamp = timeStamp;
         self.isOutcome = isOutcome;
         self.isHeader = FALSE;
     }
