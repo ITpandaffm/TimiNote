@@ -2,9 +2,11 @@
 
 *15天打造出来的app，从设计到扒图，纯粹练手，欢迎交流*
 
-演示Demo：**有bgm噢ψ(｀∇´)ψ**
+演示Demo：**有bgm噢ψ(｀∇´)ψ**（github并不支持video，所以转成了gif，当然我把视频也传上来了）
 
 <video crossorigin="anonymous" loop="" controls  width="100%" height="350"><source src="./TimiDemo.mp4"></video>
+
+![TimiDemoGif.gif](TimiDemoGif.gif)
 
 <br>
 
