@@ -210,7 +210,6 @@ static NSString *cellIdentifier = @"collectionViewCell";
 
     } else {
         [self shrink];
-
         }
 }
 
