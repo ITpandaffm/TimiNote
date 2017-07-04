@@ -6,8 +6,7 @@
 
 <video crossorigin="anonymous" loop="" controls  width="100%" height="350"><source src="./TimiDemo.mp4"></video>
 
-![TimiDemoGif.gif](TimiDemoGif.gif)
-
+<img src="TimiDemoGif.gif" width="400" height="400" alt="亦菲表演机器猫"/>
 <br>
 
 主要实现点：
