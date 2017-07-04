@@ -6,7 +6,7 @@
 
 <video crossorigin="anonymous" loop="" controls  width="100%" height="350"><source src="./TimiDemo.mp4"></video>
 
-<img src="TimiDemoGif.gif" width="400" height="400" alt="亦菲表演机器猫"/>
+<img src="TimiDemoGif.gif" width="400" height="400" alt=""/>
 <br>
 
 主要实现点：
@@ -30,5 +30,12 @@
 * 增加网络请求，把数据同步到网络上
 * 增加日历插件，用户可以自定义记录添加的时间
 * 界面二长按logo会进入抖动状态，并且拖拉可以改变其顺序
+
+##### 程序界面
+
+<img src="screen0.png" width="400" height="800" alt=""/>
+<img src="screen1.png" width="400" height="800" alt=""/>
+
+
 
 欢迎star与交流分享
