@@ -9,6 +9,8 @@
 <img src="TimiDemoGif.gif" width="400" height="400" alt=""/>
 <br>
 
+**如果gif演示太卡的话，点击gif，在新界面打开就可以流畅显示了**
+
 主要实现点：
 
 * 两个界面的传值与通信
